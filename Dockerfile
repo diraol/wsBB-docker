@@ -19,6 +19,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /src/*.deb
 
+RUN apt-get update
 
 ADD https://cloud.gastecnologia.com.br/cef/warsaw/install/GBPCEFwr64.deb /src/
 ADD https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb /src/warsaw_setup64.deb
