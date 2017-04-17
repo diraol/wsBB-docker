@@ -19,8 +19,8 @@
 # docker start ws-cef
 
 # Base docker image
-FROM ubuntu
-LABEL maintainer "Fabio Rodrigues Ribeiro <farribeiro@gmail.com>"
+FROM ubuntu:latest
+LABEL maintainer "Diego Rabatone Oliveira <diraol@diraol.eng.br>"
 
 # Install Firefox
 RUN apt-get update \
