@@ -2,21 +2,25 @@
 
 # First run:
 #
+# ./first_run_ws_bb.sh
+#
+# OR
+#
 # docker run -it \
-#	--net host \ # may as well YOLO
-#	--cpuset-cpus 0 \ # control the cpu
-#	--memory 512mb \ # max memory it can use
-#	-v /tmp/.X11-unix:/tmp/.X11-unix \ # mount the X11 socket
-#	-e DISPLAY=unix$DISPLAY \
-#	--device /dev/snd \ # so we have sound
-#	-v /dev/shm:/dev/shm \
-#	--name ws-cef \
-#	--restart=on-failure:1
-#	farribeiro/wscef-docker
+#    --net host \ # may as well YOLO
+#    --cpuset-cpus 0 \ # control the cpu
+#    --memory 512mb \ # max memory it can use
+#    -v /tmp/.X11-unix:/tmp/.X11-unix \ # mount the X11 socket
+#    -e DISPLAY=unix$DISPLAY \
+#    --device /dev/snd \ # so we have sound
+#    -v /dev/shm:/dev/shm \
+#    --name bb-pj \
+#    --restart=on-failure:1
+#    diraol-ws-bb
 #
 # Other run:
 #
-# docker start ws-cef
+# docker start bb-pj
 
 # Base docker image
 FROM ubuntu:latest
@@ -24,19 +28,19 @@ LABEL maintainer "Diego Rabatone Oliveira <diraol@diraol.eng.br>"
 
 # Install Firefox
 RUN apt-get update \
-	&& apt-get -o Acquire::ForceIPv4=true upgrade -y \
-	&& apt-get -o Acquire::ForceIPv4=true install -y \
-	language-pack-pt \
-	openssl \
-	libnss3-tools \
-	firefox \
-	firefox-locale-pt \
-	xauth \
-	--no-install-recommends \
-	# firefox -CreateProfile default
-	&& apt-get purge --auto-remove -y \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& rm -rf /src/*.deb
+    && apt-get -o Acquire::ForceIPv4=true upgrade -y \
+    && apt-get -o Acquire::ForceIPv4=true install -y \
+    language-pack-pt \
+    openssl \
+    libnss3-tools \
+    firefox \
+    firefox-locale-pt \
+    xauth \
+    --no-install-recommends \
+    # firefox -CreateProfile default
+    && apt-get purge --auto-remove -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /src/*.deb
 
 RUN apt-get -o Acquire::ForceIPv4=true update
 
