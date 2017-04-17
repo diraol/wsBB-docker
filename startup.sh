@@ -17,7 +17,7 @@ fi
 if [ ! -d ~/.mozilla ]
 then
   firefox -CreateProfile default \
-  && su -c "apt update && apt -y upgrade && apt -y install /src/warsaw_setup64.deb"
+  && su -c "apt -o Acquire::ForceIPv4=true update && apt -y -o Acquire::ForceIPv4=true upgrade && apt -y install /src/warsaw_setup64.deb"
 else
   su -c "/etc/init.d/warsaw start"
 fi
