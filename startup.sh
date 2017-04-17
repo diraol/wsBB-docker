@@ -17,7 +17,9 @@ fi
 if [ ! -d ~/.mozilla ]
 then
   firefox -CreateProfile default \
-  && su -c "apt -o Acquire::ForceIPv4=true update && apt -y -o Acquire::ForceIPv4=true upgrade && apt -y install /src/warsaw_setup64.deb"
+  && su -c "apt -o Acquire::ForceIPv4=true update && apt -y -o Acquire::ForceIPv4=true upgrade && apt -y install /src/warsaw_setup64.deb" # \
+  # A3 Cert BB Module. Needs JAVA.
+  # && java -jar /src/bb_modulo_assinatura_linux.jar
 else
   su -c "/etc/init.d/warsaw start"
 fi

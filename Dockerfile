@@ -41,6 +41,9 @@ RUN apt-get update \
 RUN apt-get -o Acquire::ForceIPv4=true update
 
 ADD https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb /src/warsaw_setup64.deb
+# A3 Cert signing module from BB.
+# To run this module it is necessary to install JAVA
+# ADD https://www14.bancobrasil.com.br/bbsmartcard/bb_modulo_assinatura_linux.jar /src/bb_modulo_assinatura_linux.jar
 COPY startup.sh /home/ff/startup.sh
 
 # Add ff  user
