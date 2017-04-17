@@ -25,6 +25,10 @@ ADD https://cloud.gastecnologia.com.br/cef/warsaw/install/GBPCEFwr64.deb /src/
 ADD https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb /src/warsaw_setup64.deb
 COPY startup.sh /home/ff/
 
+# A3 Cert signing module from BB.
+# To run this module it is necessary to install JAVA
+# ADD https://www14.bancobrasil.com.br/bbsmartcard/bb_modulo_assinatura_linux.jar /src/bb_modulo_assinatura_linux.jar
+
 # Add ff  user
 RUN groupadd -g 1000 -r ff \
 	&& useradd -u 1000 -r -g ff -G audio,video ff \
