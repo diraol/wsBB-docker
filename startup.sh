@@ -16,7 +16,7 @@ fi
 
 if [ ! -d ~/.mozilla ]
 then
-  firefox -CreateProfile default \
+  firefox -CreateProfile BBPJ \
   && su -c "apt -o Acquire::ForceIPv4=true update && apt -y -o Acquire::ForceIPv4=true upgrade && apt -y install /src/warsaw_setup64.deb" # \
   # A3 Cert BB Module. Needs JAVA.
   # && java -jar /src/bb_modulo_assinatura_linux.jar
@@ -25,4 +25,4 @@ else
 fi
 
 /usr/local/bin/warsaw/core \
-&& firefox -private-window www.bb.com.br
+&& firefox -P BBPJ https://aapj.bb.com.br/aapj/loginpfe.bb
