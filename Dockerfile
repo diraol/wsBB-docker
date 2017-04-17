@@ -24,8 +24,8 @@ LABEL maintainer "Diego Rabatone Oliveira <diraol@diraol.eng.br>"
 
 # Install Firefox
 RUN apt-get update \
-	&& apt-get upgrade -y \
-	&& apt-get install -y \
+	&& apt-get -o Acquire::ForceIPv4=true upgrade -y \
+	&& apt-get -o Acquire::ForceIPv4=true install -y \
 	language-pack-pt \
 	openssl \
 	libnss3-tools \
@@ -38,7 +38,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /src/*.deb
 
-RUN apt-get update
+RUN apt-get -o Acquire::ForceIPv4=true update
 
 ADD https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb /src/warsaw_setup64.deb
 COPY startup.sh /home/ff/startup.sh
